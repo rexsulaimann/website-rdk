@@ -1,0 +1,114 @@
+/* Umum */
+body {
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  margin: 0;
+  background: #f4f6f9;
+  color: #333;
+    background-image: url('Screenshot (11).png');
+background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/* Header */
+header {
+  background: #2563eb;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 4px solid #1e40af;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+header p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+footer {
+  background: #2563eb;
+  color: white;
+  padding: 1.5rem;
+  text-align: center;
+  border-bottom: 4px solid #1e40af;
+}
+
+
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+/* List Chart */
+.chart-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+}
+
+.chart-list a {
+  display: block;
+  background: white;
+  padding: 0;
+  font-size: 16px;
+  text-align: center;
+  font-weight: bold;
+  color: #2563eb;
+  border-radius: 12px;
+  transition: all 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+.chart-list a:hover {
+  background: #2563eb;
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Chart Page */
+
+.chart-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+iframe {
+  width: 800px ; 
+  height: 650px ;
+  display: flex;
+  border-radius: 12px;
+  border: none;
+}
+
+/* Tombol back */
+.btn-back {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: white;
+  color: #2563eb;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-back:hover {
+  background: #1e40af;
+  color: white;
+}

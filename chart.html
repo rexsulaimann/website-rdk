@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Kependudukan Mekarsari Jambe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>📈 Detail Visualisasi Data</h1>
+    <a href="index.html" class="btn-back">⬅ Kembali ke Dashboard</a>
+  </header>
+
+  <main class="chart-container">
+    <iframe id="iframe" src="" frameborder="0" allowfullscreen></iframe>
+  </main>
+
+  <script>
+    // ambil parameter chart dari URL
+    const params = new URLSearchParams(window.location.search);
+    const chartId = params.get("chart");
+
+    // mapping chart -> embed link (contoh, tinggal ganti EMBED_LINK)
+    const chartLinks = {
+      1: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=899908543&amp;format=interactive",
+      2: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1403330931&amp;format=interactive",
+      3: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1287437395&amp;format=interactive",
+      4: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=804023697&amp;format=interactive",
+      5: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1970311998&amp;format=interactive",
+      6: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1908579036&amp;format=interactive",
+      7: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1998918461&amp;format=interactive",
+      8: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1917151733&amp;format=interactive",
+      9: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1869817593&amp;format=interactive",
+      10: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=132349270&amp;format=interactive",
+      11: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1546392293&amp;format=interactive",
+      12: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1510001946&amp;format=interactive",
+      13: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1499588804&amp;format=interactive",
+      14: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=987990123&amp;format=interactive",
+      15: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=945190972&amp;format=interactive",
+      16: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=281373042&amp;format=interactive",
+      17: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1555737915&amp;format=interactive",
+      18: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1476477315&amp;format=interactive",
+      19: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1507844537&amp;format=interactive",
+      20: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=916410959&amp;format=interactive",
+      21: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1032974671&amp;format=interactive",
+      22: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=91964206&amp;format=interactive",
+      23: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=311288459&amp;format=interactive",
+      24: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1176056401&amp;format=interactive",
+      25: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=392143263&amp;format=interactive",
+      26: "https://docs.google.com/spreadsheets/d/e/2PACX-1vTrGFWXGwFLzDZknfueYnwpUc3PAbuBDkDphfwherVCa5mutrIMnroelldAA63QInZ6AIggQc6vYGw3/pubchart?oid=1517158235&amp;format=interactive",
+    };
+
+    document.getElementById("iframe").src = chartLinks[chartId] || "";
+  </script>
+</body>
+</html>
